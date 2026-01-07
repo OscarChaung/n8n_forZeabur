@@ -1,5 +1,5 @@
-# 以官方 n8n 為基底
-FROM n8nio/n8n:1.117.2
+# 以官方 n8n 為基底 (2026-01-06 最新穩定版)
+FROM n8nio/n8n:2.2.4
 
 USER root
 
@@ -14,13 +14,14 @@ RUN curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp" \
 # 安裝要在 Code/Function 節點使用的全域 Node 模組
 # 影片：ytdl-core（JS 下載）、fluent-ffmpeg（JS 封裝）
 # Notion：@notionhq/client、notion-to-md
-RUN npm install -g @notionhq/client notion-to-md ytdl-core fluent-ffmpeg
+# Markdown：marked（Markdown 轉 HTML，支援 GFM 表格）
+RUN npm install -g @notionhq/client notion-to-md ytdl-core fluent-ffmpeg marked
 
 # 讓 Code/Function 節點找得到全域模組
 ENV NODE_PATH=/usr/local/lib/node_modules
 
 # 白名單（可在 Zeabur 覆蓋）
-ENV NODE_FUNCTION_ALLOW_EXTERNAL=@notionhq/client,notion-to-md,ytdl-core,fluent-ffmpeg
+ENV NODE_FUNCTION_ALLOW_EXTERNAL=@notionhq/client,notion-to-md,ytdl-core,fluent-ffmpeg,marked
 # 可選：允許所有 Node 內建模組
 # ENV NODE_FUNCTION_ALLOW_BUILTIN=*
 
