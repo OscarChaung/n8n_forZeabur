@@ -1,6 +1,5 @@
-# 使用 Node.js 18 LTS Alpine（n8n 最穩定支援的版本）
-# 注意：Node.js 20/22 與 n8n 的 whatwg-url 有相容性問題
-FROM node:18-alpine
+# 使用 Node.js 22 Alpine
+FROM node:22-alpine
 
 USER root
 
@@ -29,7 +28,7 @@ RUN curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp" \
 # Notion：@notionhq/client、notion-to-md
 # Markdown：marked
 RUN npm install -g \
-    n8n \
+    n8n@1.70.3 \
     full-icu@1.5.0 \
     @notionhq/client \
     notion-to-md \
