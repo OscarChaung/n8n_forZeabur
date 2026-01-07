@@ -1,6 +1,6 @@
-# 使用 Node.js 20 LTS Alpine 作為基底（保留 apk 套件管理器）
-# 注意：Node.js 22 與 n8n 的 whatwg-url 有相容性問題
-FROM node:20-alpine
+# 使用 Node.js 18 LTS Alpine（n8n 最穩定支援的版本）
+# 注意：Node.js 20/22 與 n8n 的 whatwg-url 有相容性問題
+FROM node:18-alpine
 
 USER root
 
