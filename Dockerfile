@@ -1,20 +1,9 @@
-# 使用官方 n8n 2.1.2 映像（穩定版，支援 User.role）
+# 使用官方 n8n 2.1.2 映像
 FROM n8nio/n8n:2.1.2
 
 USER root
 
-# 安裝系統工具（ffmpeg、yt-dlp）
-RUN apk add --no-cache \
-    ffmpeg \
-    curl \
-    python3
-
-# 安裝 yt-dlp（單檔）
-RUN curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp" \
-      -o /usr/local/bin/yt-dlp \
- && chmod a+rx /usr/local/bin/yt-dlp
-
-# 安裝額外的 Node 模組
+# 安裝額外的 Node 模組（使用 n8n 內建的 npm）
 RUN npm install -g \
     @notionhq/client \
     notion-to-md \
