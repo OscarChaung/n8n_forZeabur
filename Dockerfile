@@ -3,8 +3,12 @@ FROM n8nio/n8n:2.2.4
 
 USER root
 
-# 系統工具與 ffmpeg
-RUN apk add --no-cache ffmpeg curl ca-certificates
+# 系統工具與 ffmpeg（n8n 2.x 使用 Debian 基底）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    curl \
+    ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 
 # 安裝 yt-dlp（單檔）
 RUN curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp" \
