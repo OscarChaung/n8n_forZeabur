@@ -28,7 +28,7 @@ RUN curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp" \
 # Notion：@notionhq/client、notion-to-md
 # Markdown：marked
 RUN npm install -g \
-    n8n@1.70.3 \
+    n8n@1.94.1 \
     full-icu@1.5.0 \
     @notionhq/client \
     notion-to-md \
